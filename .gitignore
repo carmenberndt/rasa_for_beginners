@@ -1,0 +1,5 @@
+.idea/
+models/
+*.tar.gz
+/models/
+venv/
