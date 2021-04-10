@@ -109,5 +109,7 @@ nlu:
     - How many times per week should I go to the gym?
 - intent: ask_sleep
   examples: |
-  - How much sleep do I need?
-  -
+    - How much sleep do I need?
+    - Is 5h sleep a day enough?
+    - How much sleep do you recommend?
+    - Do I need to have a set bed time?

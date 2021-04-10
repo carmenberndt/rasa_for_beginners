@@ -33,6 +33,8 @@ responses:
   - text: Most healthy adults should aim to get about 150 min of moderate exercise per week. This includes activities like a brisk walk or yard work.
   utter_diet_info:
   - text: A healthy diet includes fruits and vegetables, whole grains, dairy, lean protein, and plant-based fats. While there is room in a healthy diet for treats, added sugar should be eaten sparingly. Aim for a variety of foods, and balance.
+  utter_sleep_info:
+  - text: According to the National Sleep Foundation adults need between 7 and 9 hours of sleep per night.
 actions:
 - utter_diet_info
 - utter_greet

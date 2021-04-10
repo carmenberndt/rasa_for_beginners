@@ -52,3 +52,8 @@ stories:
   - action: utter_stress_info
   - intent: ask_eat_healthy
   - action: utter_diet_info
+
+- story: ask sleep
+  steps:
+  - intent: ask_sleep
+  - action: utter_sleep_info
