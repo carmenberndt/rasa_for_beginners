@@ -2,33 +2,6 @@ version: "2.0"
 
 stories:
 
-- story: happy path
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
-
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
-
 - story: survey happy path
   steps:
   - intent: greet
@@ -36,11 +9,6 @@ stories:
   - intent: affirm
   - action: health_form
   - active_loop: health_form
-  - active_loop: null
-  - action: utter_slots_values
-  - intent: thankyou
-  - action: utter_no_worries
-  - action: utter_goodbye
 
 - story: survey stop
   steps:
@@ -67,21 +35,6 @@ stories:
     - action: utter_ask_continue
     - intent: affirm
     - action: health_form
-    - active_loop: null
-    - action: utter_slots_values
-
-- story: ask health quesitons form
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: affirm
-  - action: health_form
-  - active_loop: health_form
-  - intent: ask_exercise
-  - action: utter_exercise_info
-  - action: health_form
-  - active_loop: null
-  - action: utter_goodbye
 
 - story: no survey
   steps:

@@ -1,7 +1,9 @@
 version: '2.0'
+
 session_config:
   session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+  carry_over_slots_to_new_session: false
+
 intents:
 - ask_eat_healthy
 - greet
@@ -18,18 +20,19 @@ intents:
 - thankyou
 
 slots:
-  confirm exercise:
-    type: unfeaturized
+  confirm_exercise:
+    type: any
   exercise:
-    type: unfeaturized
+    type: any
   sleep:
-    type: unfeaturized
+    type: any
   diet:
-    type: unfeaturized
+    type: any
   stress:
-    type: unfeaturized
+    type: any
   goal:
-    type: unfeaturized
+    type: any
+
 
 entities:
 - exercise
@@ -85,9 +88,36 @@ responses:
   - text: "Sorry, I don't quite understand. Do you want to continue?"
 
 forms:
-- health_form
+  health_form:
+    confirm_exercise:
+      - type: from_intent
+        intent: affirm
+        value: True
+      - type: from_intent
+        intent: deny
+        value: False
+      - type: from_intent
+        intent: inform
+        value: True
+    exercise:
+      - type: from_entity
+        entity: sleep
+      - type: from_intent
+        intent: deny
+        value: None
+    stress:
+      - type: from_entity
+        entity: stress
+    diet:
+      - type: from_text
+        intent:
+          - inform
+          - affirm
+          - deny
+    goal:
+      - type: from_text
+        intent: inform
 
 actions:
-- utter_diet_info
-- utter_greet
-- utter_stress_info
+- validate_health_form
+- action_submit_results
