@@ -3,3 +3,4 @@ models/
 *.tar.gz
 /models/
 venv/
+.env
