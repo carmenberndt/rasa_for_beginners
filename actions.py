@@ -1,5 +1,4 @@
-# https://rasa.com/docs/rasa/custom-actions
-from typing import Text, Dict, List, Any, Union
+from typing import Any, Text, Dict, List, Union, Optional
 from dotenv import load_dotenv
 
 from rasa_sdk import Action, Tracker
@@ -23,9 +22,8 @@ def create_health_log(confirm_exercise, exercise, sleep, diet, stress, goal):
     headers = {
         "Content-Type": "application/json",
         "Accept": "application/json",
-        "Authorization": f"Bearer {airtable_api_key}"
+        "Authorization": f"Bearer {airtable_api_key}",
     }
-
     data = {
         "fields": {
             "Exercised?": confirm_exercise,
@@ -33,10 +31,9 @@ def create_health_log(confirm_exercise, exercise, sleep, diet, stress, goal):
             "Amount of sleep": sleep,
             "Stress": stress,
             "Diet": diet,
-            "Goal": goal
+            "Goal": goal,
         }
     }
-
     try:
         response = requests.post(
             request_url, headers=headers, data=json.dumps(data)
@@ -44,6 +41,8 @@ def create_health_log(confirm_exercise, exercise, sleep, diet, stress, goal):
         response.raise_for_status()
     except requests.exceptions.HTTPError as err:
         raise SystemExit(err)
+
+    return response
 
 
 class ValidateHealthForm(FormValidationAction):
@@ -60,7 +59,7 @@ class ValidateHealthForm(FormValidationAction):
         if value:
             return {"confirm_exercise": True}
         else:
-            return {"confirm_exercise": False, "exercise": None}
+            return {"exercise": "None", "confirm_exercise": False}
 
 
 class ActionSubmitResults(Action):
